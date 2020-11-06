@@ -10,11 +10,12 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatCardModule} from '@angular/material/card';
 import {FormsModule} from '@angular/forms';
-import { ApiService } from './api.service'
+import { ApiService } from './api.service';
+import { QuestionsComponent} from './questions.component'
 
 @NgModule({
   declarations: [
-    AppComponent, QuestionComponent
+    AppComponent, QuestionComponent, QuestionsComponent
   ],
   imports: [
     BrowserModule,

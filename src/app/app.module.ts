@@ -6,16 +6,27 @@ import { AppComponent } from './app.component';
 import { QuestionComponent } from './question.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
-import {MatButtonModule} from '@angular/material/button';
-import {MatInputModule} from '@angular/material/input';
-import {MatCardModule} from '@angular/material/card';
-import {FormsModule} from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatCardModule } from '@angular/material/card';
+import { MatListModule } from '@angular/material/list';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 import { ApiService } from './api.service';
 import { QuestionsComponent} from './questions.component'
+import { HomeComponent } from './home.component'
+import { from } from 'rxjs';
+import { NavComponent } from './nav.component'
 
+const routes = [
+  { path: '', component: QuestionComponent },
+  { path: 'question', component: QuestionComponent },
+  { path: 'questions', component: QuestionsComponent }
+]
 @NgModule({
   declarations: [
-    AppComponent, QuestionComponent, QuestionsComponent
+    AppComponent, QuestionComponent, QuestionsComponent, HomeComponent, NavComponent
   ],
   imports: [
     BrowserModule,
@@ -23,10 +34,13 @@ import { QuestionsComponent} from './questions.component'
     BrowserAnimationsModule,
     MatSliderModule,
     HttpClientModule,
+    RouterModule.forRoot(routes),
     MatButtonModule,
     MatInputModule,
     MatCardModule,
-    FormsModule
+    FormsModule,
+    MatListModule,
+    MatToolbarModule
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]

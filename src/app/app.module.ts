@@ -18,15 +18,25 @@ import { QuestionsComponent} from './questions.component'
 import { HomeComponent } from './home.component'
 import { from } from 'rxjs';
 import { NavComponent } from './nav.component'
+import { QuizComponent } from './quiz.component'
+import { QuizzesComponent} from './quizzes.component'
 
 const routes = [
-  { path: '', component: QuestionComponent },
+  { path: '', component: HomeComponent },
   { path: 'question', component: QuestionComponent },
-  { path: 'questions', component: QuestionsComponent }
+  { path: 'question/:quizId', component: QuestionComponent },
+  { path: 'questions', component: QuestionsComponent },
+  { path: 'quiz', component: QuizComponent }
 ]
 @NgModule({
   declarations: [
-    AppComponent, QuestionComponent, QuestionsComponent, HomeComponent, NavComponent
+    AppComponent, 
+    QuestionComponent, 
+    QuestionsComponent, 
+    HomeComponent, 
+    NavComponent, 
+    QuizComponent,
+    QuizzesComponent
   ],
   imports: [
     BrowserModule,

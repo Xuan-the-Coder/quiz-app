@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { QuestionComponent } from './question.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatSliderModule } from '@angular/material/slider';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
@@ -54,17 +53,14 @@ const routes = [
     LoginComponent,
     PlayComponent,
     PlayQuizComponent,
-    MatRadioModule,
     FinishedComponent,
-    MatDialogModule
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatSliderModule,
     HttpClientModule,
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' }),
     MatButtonModule,
     MatInputModule,
     MatCardModule,
@@ -72,7 +68,9 @@ const routes = [
     ReactiveFormsModule,
     MatListModule,
     MatToolbarModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatRadioModule,
+    MatDialogModule
   ],
   providers: [ApiService, AuthService, {
     provide: HTTP_INTERCEPTORS,

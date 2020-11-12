@@ -11,6 +11,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatDialogModule } from '@angular/material/dialog'
+import { MatRadioModule } from '@angular/material/radio'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { ApiService } from './api.service';
@@ -24,6 +27,9 @@ import { RegisterComponent } from './register.component'
 import { LoginComponent } from './login.component'
 import { AuthService } from './auth.service'
 import { AuthInterceptor} from './auth.interceptor'
+import { PlayComponent } from './play.component'
+import { PlayQuizComponent } from './playQuiz.component'
+import { FinishedComponent } from './finished.component'
 
 const routes = [
   { path: '', component: HomeComponent },
@@ -31,7 +37,9 @@ const routes = [
   { path: 'question/:quizId', component: QuestionComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'quiz', component: QuizComponent }
+  { path: 'quiz', component: QuizComponent },
+  { path: 'play', component: PlayComponent },
+  { path: 'playQuiz/:quizId', component: PlayQuizComponent }
 ]
 @NgModule({
   declarations: [
@@ -43,7 +51,12 @@ const routes = [
     QuizComponent,
     QuizzesComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    PlayComponent,
+    PlayQuizComponent,
+    MatRadioModule,
+    FinishedComponent,
+    MatDialogModule
   ],
   imports: [
     BrowserModule,
@@ -58,13 +71,15 @@ const routes = [
     FormsModule,
     ReactiveFormsModule,
     MatListModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatExpansionModule
   ],
   providers: [ApiService, AuthService, {
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
     multi: true
   }],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [FinishedComponent]
 })
 export class AppModule { }

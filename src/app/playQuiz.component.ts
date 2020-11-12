@@ -1,7 +1,7 @@
 import { Component } from '@angular/core'
 import { ApiService } from './api.service'
 import { ActivatedRoute } from '@angular/router'
-import {MatDialog} from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { FinishedComponent } from './finished.component'
 
 @Component({
@@ -34,7 +34,9 @@ export class PlayQuizComponent {
             correct++
     });
 
-    const dialogRef = this.dialog.open(FinishedComponent);
+    const dialogRef = this.dialog.open(FinishedComponent, {
+      data: { correct, total: this.questions.length }
+    });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
